@@ -5,3 +5,5 @@ obj/
 Logs/
 PostProcessing/
 Assets/PostProcessing.meta
+Assembly-CSharp.csproj
+Assembly-CSharp-Editor.csproj
