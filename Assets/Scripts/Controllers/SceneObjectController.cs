@@ -1,10 +1,11 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class SceneObjectController : MonoBehaviour
 {
     private List<Pickable> pickables;
+
+    private 
 
     void Start()
     {
@@ -33,6 +34,7 @@ public class SceneObjectController : MonoBehaviour
         if (closest != null)
         {
             character.Freeze();
+            pickables.Remove(closest);
             closest.PickBy(character);
         }
     }

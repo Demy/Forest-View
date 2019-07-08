@@ -7,6 +7,13 @@ public class Character : MonoBehaviour
     protected EquipmentItem rightHand;
     protected EquipmentItem leftHand;
 
+    protected EffectsController effects;
+
+    private void Start()
+    {
+        effects = FindObjectOfType<EffectsController>();
+    }
+
     public bool CanPick(InventoryItem item)
     {
         if (item.leftHand && leftHand != null)
@@ -26,12 +33,44 @@ public class Character : MonoBehaviour
         movement.enabled = true;
     }
 
-    public void Pick(InventoryItem item)
+    public virtual void Pick(InventoryItem item)
     {
         Unfreeze();
         if (item.wearable != null)
         {
-            rightHand = Instantiate(item.wearable, transform).GetComponent<EquipmentItem>();
+            ReplaceInRightHand(item);
         }
+
+        if (item.rightHand)
+        {
+            rightHand.OnHit += OnWeaponHit;
+        }
+        if (item.leftHand)
+        {
+            leftHand.OnHit += OnWeaponHit;
+        }
+    }
+
+    private void ReplaceInRightHand(InventoryItem item)
+    {
+        EquipmentItem equip = Instantiate(item.wearable, transform).GetComponent<EquipmentItem>();
+
+        if (rightHand != null)
+        {
+            rightHand.OnHit -= OnWeaponHit;
+            rightHand.Drop();
+            Destroy(rightHand.gameObject);
+        }
+        rightHand = equip;
+    }
+
+    private void OnWeaponHit(Collision collision)
+    {
+        EffectsController.EffectType effectType = EffectsController.EffectType.Default;
+        if (collision.gameObject.tag == "Wood")
+        {
+            effectType = EffectsController.EffectType.Wood;
+        }
+        effects.SpawnParticles(collision.contacts[0].point, effectType);
     }
 }

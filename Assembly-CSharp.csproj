@@ -109,11 +109,14 @@
     <Compile Include="Assets\PostProcessing\Utilities\CustomMotionTexture\ExampleWheelController.cs" />
     <Compile Include="Assets\Scripts\Character\Character.cs" />
     <Compile Include="Assets\Scripts\Character\MainCharacter.cs" />
+    <Compile Include="Assets\Scripts\Controllers\EffectsController.cs" />
     <Compile Include="Assets\Scripts\Controllers\SceneObjectController.cs" />
     <Compile Include="Assets\Scripts\Items\EquipmentItem.cs" />
     <Compile Include="Assets\Scripts\Items\Pickable.cs" />
     <Compile Include="Assets\Scripts\MovementControls.cs" />
     <Compile Include="Assets\Scripts\ScriptableObjects\InventoryItem.cs" />
+    <Compile Include="Assets\Scripts\Utils\ObjectPool.cs" />
+    <Compile Include="Assets\Scripts\WorldObjects\DestructibleObject.cs" />
     <None Include="Assets\PostProcessing\Resources\Shaders\DepthOfField.shader" />
     <None Include="Assets\PostProcessing\Resources\Shaders\MotionBlur.cginc" />
     <None Include="Assets\PostProcessing\Resources\Shaders\Fog.shader" />

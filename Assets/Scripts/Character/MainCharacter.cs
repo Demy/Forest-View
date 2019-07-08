@@ -1,4 +1,4 @@
-﻿using System.Collections;
+﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -16,5 +16,10 @@ public class MainCharacter : Character
         {
             rightHand.Use();
         }
+    }
+
+    public override void Pick(InventoryItem item)
+    {
+        base.Pick(item);
     }
 }
