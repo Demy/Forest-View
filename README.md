@@ -1,6 +1,10 @@
 # Forest-View
 3D RPG made with Unity3D
 
+## External packages: ##
+* [Post Processing Stack by UNITY TECHNOLOGIES](https://assetstore.unity.com/packages/essentials/post-processing-stack-83912)
+
+---
 
 Work in progress
 
