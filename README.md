@@ -1,7 +1,8 @@
 # Forest-View
-Semi-realistic graphics project.
+3D RPG made with Unity3D
 
-Might turn out as a game or just a realxing world navigation demo.
+
+Work in progress
 
 ### Day 1 ###
 ![Day 1 GIF](https://media.giphy.com/media/h46HqwCQzE2Kw9Sx7j/giphy.gif "Day 1")
