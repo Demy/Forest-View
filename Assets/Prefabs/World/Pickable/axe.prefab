@@ -87,7 +87,7 @@ MeshCollider:
   m_GameObject: {fileID: 44299606491782421}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Convex: 0
   m_CookingOptions: 14
@@ -141,7 +141,4 @@ MonoBehaviour:
   body: {fileID: 0}
   collider: {fileID: 8842762406286503221}
   pickSpeed: 2
-  rotationSpeed: 360
   pickDist: 2
-  pickedPosition: {x: 0.3, y: -0.3, z: 0.63}
-  pickedRotation: {x: 20, y: 93.6, z: 5}

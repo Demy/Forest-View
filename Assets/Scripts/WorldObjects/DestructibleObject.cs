@@ -16,12 +16,15 @@ public class DestructibleObject : MonoBehaviour
     {
         if (--hp <= 0)
         {
+            SceneObjectController scene = FindObjectOfType<SceneObjectController>();
             if (destroyedPrefab != null)
             {
                 GameObject destroyed = Instantiate(destroyedPrefab, transform.parent);
                 destroyed.transform.position = transform.position;
                 destroyed.transform.rotation = transform.rotation;
+                scene.UpdatePickablesFrom(destroyed.transform);
             }
+            scene.RemovePickablesFrom(transform);
             Destroy(gameObject);
         }
     }

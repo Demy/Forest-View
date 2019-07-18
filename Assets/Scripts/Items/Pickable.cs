@@ -20,14 +20,20 @@ public class Pickable : MonoBehaviour
     public void PickBy(Character character)
     {
         if (body != null)
+        {
             body.detectCollisions = false;
+            body.useGravity = false;
+        }
         if (collider != null)
             collider.enabled = false;
         if (pickAnimation != null)
             pickAnimation.SetTrigger("Pick");
         picker = character.transform;
         this.character = character;
-        pickedPosition = item.wearable.transform.position;
+        if (item.wearable != null)
+            pickedPosition = item.wearable.transform.position;
+
+        transform.SetParent(null);
 
         isPicked = true;
     }

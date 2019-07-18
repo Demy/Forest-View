@@ -2,58 +2,45 @@
 
 public class Character : MonoBehaviour
 {
-    public MovementControls movement;
+    public Transform bodyTop;
+    public int inventorySize = 10;
 
+    protected Inventory inventory;
     protected EquipmentItem rightHand;
-    protected EquipmentItem leftHand;
-
     protected EffectsController effects;
 
     private void Start()
     {
         effects = FindObjectOfType<EffectsController>();
+        inventory = new Inventory(inventorySize);
     }
 
     public bool CanPick(InventoryItem item)
     {
-        if (item.leftHand && leftHand != null)
-            return false;
         if (item.rightHand && rightHand != null)
             return false;
         return true;
     }
 
-    public void Freeze()
-    {
-        movement.enabled = false;
-    }
-
-    public void Unfreeze()
-    {
-        movement.enabled = true;
-    }
+    public virtual void Freeze(bool freeze) {}
 
     public virtual void Pick(InventoryItem item)
     {
-        Unfreeze();
+        Freeze(false);
         if (item.wearable != null)
-        {
-            ReplaceInRightHand(item);
-        }
-
-        if (item.rightHand)
-        {
-            rightHand.OnHit += OnWeaponHit;
-        }
-        if (item.leftHand)
-        {
-            leftHand.OnHit += OnWeaponHit;
-        }
+            ReplaceInHand(item);
+        else
+            inventory.Add(item);
     }
 
-    private void ReplaceInRightHand(InventoryItem item)
+    public Inventory GetInventory()
     {
-        EquipmentItem equip = Instantiate(item.wearable, transform).GetComponent<EquipmentItem>();
+        return inventory;
+    }
+
+    private void ReplaceInHand(InventoryItem item)
+    {
+        EquipmentItem equip = Instantiate(item.wearable, bodyTop).GetComponent<EquipmentItem>();
 
         if (rightHand != null)
         {
@@ -61,6 +48,7 @@ public class Character : MonoBehaviour
             rightHand.Drop();
             Destroy(rightHand.gameObject);
         }
+        equip.OnHit += OnWeaponHit;
         rightHand = equip;
     }
 

@@ -600,7 +600,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     randomizeRotationDirection: 0
-    maxNumParticles: 10
+    maxNumParticles: 15
     size3D: 0
     rotation3D: 0
     gravityModifier:
@@ -975,7 +975,7 @@ ParticleSystem:
       countCurve:
         serializedVersion: 2
         minMaxState: 0
-        scalar: 7
+        scalar: 10
         minScalar: 30
         maxCurve:
           serializedVersion: 2
@@ -1033,7 +1033,7 @@ ParticleSystem:
       countCurve:
         serializedVersion: 2
         minMaxState: 0
-        scalar: 3
+        scalar: 5
         minScalar: 30
         maxCurve:
           serializedVersion: 2
@@ -5125,6 +5125,7 @@ GameObject:
   - component: {fileID: 1471100780092824863}
   - component: {fileID: 1476627226234352555}
   - component: {fileID: 7911711624759287497}
+  - component: {fileID: 901789562559463856}
   m_Layer: 0
   m_Name: branch
   m_TagString: Wood
@@ -5177,6 +5178,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHit: 2
   destroyedPrefab: {fileID: 0}
+--- !u!114 &901789562559463856
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2463820313451654924}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 453302e214dc3492a91060885663800a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item: {fileID: 11400000, guid: 67d353afa47214bd0a52e0cd6d048daf, type: 2}
+  pickAnimation: {fileID: 0}
+  body: {fileID: 1476627226234352555}
+  collider: {fileID: 9058860389755344144}
+  pickSpeed: 10
+  pickDist: 5
 --- !u!1 &2497556660130550788
 GameObject:
   m_ObjectHideFlags: 0
@@ -5279,6 +5298,7 @@ GameObject:
   - component: {fileID: 6166184074069715471}
   - component: {fileID: 2641787358162286513}
   - component: {fileID: 2186032448619240543}
+  - component: {fileID: 8801068051186346654}
   m_Layer: 0
   m_Name: branch (1)
   m_TagString: Wood
@@ -5331,6 +5351,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHit: 2
   destroyedPrefab: {fileID: 0}
+--- !u!114 &8801068051186346654
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2644200939471530662}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 453302e214dc3492a91060885663800a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item: {fileID: 11400000, guid: 67d353afa47214bd0a52e0cd6d048daf, type: 2}
+  pickAnimation: {fileID: 0}
+  body: {fileID: 2641787358162286513}
+  collider: {fileID: 3315992030575056989}
+  pickSpeed: 10
+  pickDist: 5
 --- !u!1 &6421926082555073746
 GameObject:
   m_ObjectHideFlags: 0

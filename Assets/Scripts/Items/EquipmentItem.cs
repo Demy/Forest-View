@@ -38,7 +38,7 @@ public class EquipmentItem : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject == transform.parent.gameObject ||
+        if (collision.gameObject == transform.parent.parent.gameObject ||
             ignore.IndexOf(collision.gameObject) >= 0)
             return;
 

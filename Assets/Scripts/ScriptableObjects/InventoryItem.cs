@@ -8,7 +8,7 @@ public class InventoryItem : ScriptableObject
     [SerializeField]
     public bool rightHand;
     [SerializeField]
-    public bool leftHand;
-    [SerializeField]
     public GameObject wearable;
+    [SerializeField]
+    public Texture2D icon;
 }

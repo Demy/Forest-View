@@ -5,8 +5,6 @@ public class SceneObjectController : MonoBehaviour
 {
     private List<Pickable> pickables;
 
-    private 
-
     void Start()
     {
         pickables = new List<Pickable>(FindObjectsOfType<Pickable>());
@@ -33,9 +31,27 @@ public class SceneObjectController : MonoBehaviour
         }
         if (closest != null)
         {
-            character.Freeze();
+            character.Freeze(true);
             pickables.Remove(closest);
             closest.PickBy(character);
         }
+    }
+
+    public void UpdatePickablesFrom(Transform parent)
+    {
+        Pickable item = parent.GetComponent<Pickable>();
+        if (item != null)
+            pickables.Add(item);
+        for (int i = 0; i < parent.childCount; i++)
+            UpdatePickablesFrom(parent.GetChild(i));
+    }
+
+    public void RemovePickablesFrom(Transform parent)
+    {
+        Pickable item = parent.GetComponent<Pickable>();
+        if (item != null)
+            pickables.Remove(item);
+        for (int i = 0; i < parent.childCount; i++)
+            RemovePickablesFrom(parent.GetChild(i));
     }
 }

@@ -5,7 +5,6 @@ using System.Collections;
 
 public class MovementControls : MonoBehaviour
 {
-    public Camera camera;
     public Rigidbody body;
     public float speed = 10.0f;
     public float gravity = 10.0f;
@@ -13,8 +12,10 @@ public class MovementControls : MonoBehaviour
     public bool canJump = true;
     public float jumpHeight = 2.0f;
 
+    public Transform lookingPart;
     public float sensitivity = 10f;
     public float maxYAngle = 80f;
+    public float minYAngle = -80f;
     private Vector2 currentRotation;
 
     protected bool grounded = false;
@@ -23,9 +24,6 @@ public class MovementControls : MonoBehaviour
     {
         body.freezeRotation = true;
         body.useGravity = false;
-
-        if (camera == null)
-            camera = Camera.main;
     }
 
     void Update()
@@ -33,8 +31,11 @@ public class MovementControls : MonoBehaviour
         currentRotation.x += Input.GetAxis("Mouse X") * sensitivity;
         currentRotation.y -= Input.GetAxis("Mouse Y") * sensitivity;
         currentRotation.x = Mathf.Repeat(currentRotation.x, 360);
-        currentRotation.y = Mathf.Clamp(currentRotation.y, -maxYAngle, maxYAngle);
-        transform.rotation = Quaternion.Euler(0, currentRotation.x, 0);
+        currentRotation.y = Mathf.Clamp(currentRotation.y, -maxYAngle, -minYAngle);
+
+        transform.Rotate(new Vector3(0, currentRotation.x, 0) - transform.rotation.eulerAngles);
+        lookingPart.Rotate(new Vector3(currentRotation.y, 0, 0) - lookingPart.localRotation.eulerAngles, Space.Self);
+
         if (Input.GetMouseButtonDown(0))
             Cursor.lockState = CursorLockMode.Locked;
     }

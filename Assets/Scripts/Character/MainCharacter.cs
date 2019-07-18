@@ -4,10 +4,19 @@ using UnityEngine;
 
 public class MainCharacter : Character
 {
+    public MovementControls movement;
+
     public SceneObjectController objects;
+
+    public override void Freeze(bool freeze)
+    {
+        movement.enabled = !freeze;
+        base.Freeze(freeze);
+    }
 
     private void Update()
     {
+        if (!movement.enabled) return;
         if (Input.GetKeyDown(KeyCode.E))
         {
             objects.TryPickClosest(this);
